@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Repository\Eloquent;
+namespace App\Repositories\Eloquent;
 
 use App\Models\Season;
+use App\Repositories\SeasonsRepository;
 use Illuminate\Database\Eloquent\Collection;
-use Illuminate\Database\Eloquent\Model;
 
-class SeasonRepository implements EloquentRepositoryInterface
+class EloquentSeasonsRepository implements SeasonsRepository
 {
 
     public function create(array $seasons)
@@ -14,7 +14,7 @@ class SeasonRepository implements EloquentRepositoryInterface
         return Season::insert($seasons);
     }
 
-    public function find(int $id): ? Model
+    public function find(int $id): ? Season
     {
         return Season::findOrfail($id);
     }
@@ -29,8 +29,8 @@ class SeasonRepository implements EloquentRepositoryInterface
         return Season::destroy($id);
     }
 
-    public function update(Season|Model $model)
+    public function update(Season $seasons)
     {
-        $model->update();
+        $seasons->update();
     }
 }

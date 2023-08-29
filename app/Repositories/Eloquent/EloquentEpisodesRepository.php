@@ -1,21 +1,19 @@
 <?php
 
-namespace App\Repository\Eloquent;
+namespace App\Repositories\Eloquent;
 
-use App\Http\Middleware\TrimStrings;
 use App\Models\Episode;
+use App\Repositories\EpisodesRepository;
 use Illuminate\Database\Eloquent\Collection;
-use Illuminate\Database\Eloquent\Model;
 
-class EpisodeRepository implements EloquentRepositoryInterface
+class EloquentEpisodesRepository implements EpisodesRepository
 {
-
     public function create(array $episodes)
     {
         return Episode::insert($episodes);
     }
 
-    public function find(int $id): ? Model
+    public function find(int $id): ? Episode
     {
         return Episode::findOrFail($id);
     }
@@ -30,9 +28,12 @@ class EpisodeRepository implements EloquentRepositoryInterface
         return Episode::destroy($id);
     }
 
-    public function update(Episode|Model $model)
+    public function update(Episode $episodes)
     {
-        $model->update();
+        $episodes->update();
     }
-}
 
+
+
+
+}

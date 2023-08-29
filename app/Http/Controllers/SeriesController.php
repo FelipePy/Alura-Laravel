@@ -4,27 +4,14 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\SeriesFormRequest;
 use App\Models\Series;
-use App\Repository\Eloquent\EpisodeRepository;
-use App\Repository\Eloquent\SeasonRepository;
-use App\Repository\Eloquent\SerieRepository;
-use Illuminate\Http\Request;
+use App\Repositories\SeriesRepository;
 use Illuminate\Support\Facades\DB;
 use Illuminate\View\View;
 
 class SeriesController extends Controller
 {
 
-    private SerieRepository $serieRepository;
-    private SeasonRepository $seasonRepository;
-    private EpisodeRepository $episodeRepository;
-
-    public function __construct()
-    {
-        $this->serieRepository = new SerieRepository();
-        $this->seasonRepository = new SeasonRepository();
-        $this->episodeRepository = new EpisodeRepository();
-    }
-    public function index(Request $request)
+    public function index(SeriesRepository $repository)
     {
         // return response('', ['Location' => 'url']);
         // Posso usar uma função chamada redirect('url')
@@ -42,7 +29,7 @@ class SeriesController extends Controller
         # $series = Series::all();
         # $baseRepository = new BaseRepository(new Series());
         #$series = $baseRepository->findAll();
-        $series = $this->serieRepository->findAll();
+        $series = $repository->findAll();
         $successMessage = session('success.message');
 
         return view('series.index')
@@ -50,9 +37,9 @@ class SeriesController extends Controller
             ->with('successMessage', $successMessage);
     }
 
-    public function show(int $id): View
+    public function show(int $id, SeriesRepository $repository): View
     {
-        $serie = $this->serieRepository->find($id);
+        $serie = $repository->find($id);
         return view('series.show')
             ->with('serie', $serie);
     }
@@ -62,27 +49,22 @@ class SeriesController extends Controller
         return view('series.create');
     }
 
-    public function store(SeriesFormRequest $request)
+    public function store(SeriesFormRequest $request, SeriesRepository $serieRepository)
     {
         $attributes = $request->all();
-        $serie = DB::transaction(function () use ($attributes) {
-            $serie = $this->serieRepository->create($attributes);
-            $seasons = $this->serieRepository->create_season($serie->id, $attributes['seasonsQty']);
-            $this->seasonRepository->create($seasons);
-            $episodes = $this->serieRepository->create_episode($serie->seasons, (int) $attributes['episodesPerSeason']);
-            $this->episodeRepository->create($episodes);
+        $serie = DB::transaction(function () use ($attributes, $serieRepository) {
+            $serie = $serieRepository->create($attributes);
 
             return $serie;
         });
-
 
         return to_route('series.index')
             ->with('success.message', "A série '{$serie->name}' adicionada com sucesso.");
     }
 
-    public function destroy(Series $series)
+    public function destroy(Series $series, SeriesRepository $repository)
     {
-        $this->serieRepository->delete($series->id);
+        $repository->delete($series->id);
 
         return to_route('series.index')
             ->with('success.message', "A série '{$series->name}' foi removida com sucesso.");
@@ -94,10 +76,10 @@ class SeriesController extends Controller
             ->with('series', $series);
     }
 
-    public function update(Series $series, SeriesFormRequest $request)
+    public function update(Series $series, SeriesFormRequest $request, SeriesRepository $repository)
     {
         $series->fill($request->all());
-        $this->serieRepository->update($series);
+        $repository->update($series);
 
         return to_route('series.index')
             ->with('success.message', "A série '{$series->name}' foi alterada com sucesso.");
