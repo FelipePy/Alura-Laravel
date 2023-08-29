@@ -4,18 +4,25 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\SeriesFormRequest;
 use App\Models\Series;
+use App\Repository\Eloquent\EpisodeRepository;
+use App\Repository\Eloquent\SeasonRepository;
 use App\Repository\Eloquent\SerieRepository;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\View\View;
 
 class SeriesController extends Controller
 {
 
     private SerieRepository $serieRepository;
+    private SeasonRepository $seasonRepository;
+    private EpisodeRepository $episodeRepository;
 
     public function __construct()
     {
         $this->serieRepository = new SerieRepository();
+        $this->seasonRepository = new SeasonRepository();
+        $this->episodeRepository = new EpisodeRepository();
     }
     public function index(Request $request)
     {
@@ -57,7 +64,17 @@ class SeriesController extends Controller
 
     public function store(SeriesFormRequest $request)
     {
-        $serie = $this->serieRepository->create($request->all());
+        $attributes = $request->all();
+        $serie = DB::transaction(function () use ($attributes) {
+            $serie = $this->serieRepository->create($attributes);
+            $seasons = $this->serieRepository->create_season($serie->id, $attributes['seasonsQty']);
+            $this->seasonRepository->create($seasons);
+            $episodes = $this->serieRepository->create_episode($serie->seasons, (int) $attributes['episodesPerSeason']);
+            $this->episodeRepository->create($episodes);
+
+            return $serie;
+        });
+
 
         return to_route('series.index')
             ->with('success.message', "A série '{$serie->name}' adicionada com sucesso.");

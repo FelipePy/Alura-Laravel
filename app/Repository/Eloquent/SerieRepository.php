@@ -8,20 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class SerieRepository implements EloquentRepositoryInterface
 {
-    private SeasonRepository $seasonRepository;
-    private EpisodeRepository $episodeRepository;
-
-    public function __construct()
-    {
-        $this->seasonRepository = new SeasonRepository();
-        $this->episodeRepository = new EpisodeRepository();
-    }
 
     public function create(array $attributes): ? Model
     {
         $series = Series::create($attributes);
-        $this->create_season($series->id, $attributes['seasonsQty']);
-        $this->create_episode($series->seasons, $attributes['episodesPerSeason']);
         return $series;
     }
 
@@ -45,7 +35,7 @@ class SerieRepository implements EloquentRepositoryInterface
         $model->update();
     }
 
-    private function create_season(int $series_id, int $seasonsQty)
+    public function create_season(int $series_id, int $seasonsQty)
     {
         $seasons = [];
         for ($i = 1; $i <= $seasonsQty; $i++) {
@@ -54,10 +44,10 @@ class SerieRepository implements EloquentRepositoryInterface
                 'number' => $i
             ];
         }
-        $this->seasonRepository->create($seasons);
+        return $seasons;
     }
 
-    private function create_episode(Collection $seasons, int $episodesPerSeason)
+    public function create_episode(Collection $seasons, int $episodesPerSeason)
     {
         $episodes = [];
         foreach ($seasons as $season) {
@@ -68,6 +58,6 @@ class SerieRepository implements EloquentRepositoryInterface
                 ];
             }
         }
-        $this->episodeRepository->create($episodes);
+        return $episodes;
     }
 }
