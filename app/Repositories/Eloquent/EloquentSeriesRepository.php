@@ -6,6 +6,7 @@ use App\Models\Series;
 use App\Repositories\EpisodesRepository;
 use App\Repositories\SeasonsRepository;
 use App\Repositories\SeriesRepository;
+use DateTime;
 use Illuminate\Database\Eloquent\Collection;
 
 class EloquentSeriesRepository implements SeriesRepository
@@ -48,7 +49,9 @@ class EloquentSeriesRepository implements SeriesRepository
         for ($i = 1; $i <= $seasonsQty; $i++) {
             $seasons[] = [
                 'series_id' => $series_id,
-                'number' => $i
+                'number' => $i,
+                'created_at' => new DateTime('now', new \DateTimeZone('America/Sao_Paulo')),
+                'updated_at' => new DateTime('now', new \DateTimeZone('America/Sao_Paulo'))
             ];
         }
         $this->seasonRepository->create($seasons);
@@ -61,7 +64,9 @@ class EloquentSeriesRepository implements SeriesRepository
             for ($i = 1; $i <= $episodesPerSeason; $i++) {
                 $episodes[] = [
                     'season_id' => $season->id,
-                    'number' => $i
+                    'number' => $i,
+                    'created_at' => new DateTime('now', new \DateTimeZone('America/Sao_Paulo')),
+                    'updated_at' => new DateTime('now', new \DateTimeZone('America/Sao_Paulo'))
                 ];
             }
         }

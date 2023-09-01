@@ -10,7 +10,7 @@ class EloquentEpisodesRepository implements EpisodesRepository
 {
     public function create(array $episodes)
     {
-        return Episode::insert($episodes);
+        return Episode::updateOrInsert($episodes);
     }
 
     public function find(int $id): ? Episode
@@ -28,9 +28,9 @@ class EloquentEpisodesRepository implements EpisodesRepository
         return Episode::destroy($id);
     }
 
-    public function update(Episode $episodes)
+    public function update(Episode $episode)
     {
-        $episodes->update();
+        $episode->update();
     }
 
 

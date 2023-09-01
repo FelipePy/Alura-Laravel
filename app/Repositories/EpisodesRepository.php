@@ -12,6 +12,6 @@ interface EpisodesRepository
     public function find(int $id): ? Episode;
     public function findAll(): Collection;
     public function delete(int $id): int;
-    public function update(Episode $episodes);
+    public function update(Episode $episode);
 }
 
