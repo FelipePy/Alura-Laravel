@@ -24,9 +24,6 @@ class EpisodesController extends Controller
         $watchedEpisodes = $request->episodes;
         $episodes = $season->episodes;
 
-        # TODO: Alterar somente aqueles que foram modificados.
-        # Todos os episódios estão sendo alterados, o que faz com que seu updated_at seja atualizado.
-
         $episodes->each(function ($episode) use ($watchedEpisodes) {
             if (!$episode->watched && in_array($episode->id, $watchedEpisodes)) {
                 echo "$episode->id True";
