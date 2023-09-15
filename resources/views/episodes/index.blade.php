@@ -1,10 +1,4 @@
-<x-layout title="Episódios da temporada {{ $season->number }}">
-
-    @isset($successMessage)
-        <div class="alert alert-success">
-            {{ $successMessage }}
-        </div>
-    @endisset
+<x-layout title="Episódios da temporada {{ $season->number }}" :successMessage="$successMessage">
 
     <ul class="list-group">
         <form action="{{ route('episodes.store', $season->id, $season->episodes()) }}" method="post" >

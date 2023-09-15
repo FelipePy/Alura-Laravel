@@ -16,16 +16,14 @@ class EpisodesController extends Controller
         $season = $repository->find($season->id);
         $episodes = $season->episodes();
         return view('episodes.index')
-            ->with('season', $season);
+            ->with('season', $season)
+            ->with('successMessage', session("successMessage"));
     }
 
     public function store(Request $request, EpisodesRepository $repository, Season $season)
     {
         $watchedEpisodes = $request->episodes;
         $episodes = $season->episodes;
-
-        # TODO: Alterar somente aqueles que foram modificados.
-        # Todos os episódios estão sendo alterados, o que faz com que seu updated_at seja atualizado.
 
         $episodes->each(function ($episode) use ($watchedEpisodes) {
             if (!$episode->watched && in_array($episode->id, $watchedEpisodes)) {
@@ -43,6 +41,7 @@ class EpisodesController extends Controller
         $episodes = $episodes->toArray();
         $repository->create($episodes);
 
-        return to_route('episodes.index', $season->id);
+        return to_route('episodes.index', $season->id)
+            ->with("successMessage", "Episódios alterados com sucesso.");
     }
 }

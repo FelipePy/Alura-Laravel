@@ -30,7 +30,7 @@ class SeriesController extends Controller
         # $baseRepository = new BaseRepository(new Series());
         #$series = $baseRepository->findAll();
         $series = $repository->findAll();
-        $successMessage = session('success.message');
+        $successMessage = session('successMessage');
 
         return view('series.index')
             ->with('series', $series)
@@ -59,7 +59,7 @@ class SeriesController extends Controller
         });
 
         return to_route('series.index')
-            ->with('success.message', "A série '{$serie->name}' adicionada com sucesso.");
+            ->with('successMessage', "A série '{$serie->name}' foi adicionada com sucesso.");
     }
 
     public function destroy(Series $series, SeriesRepository $repository)
@@ -67,7 +67,7 @@ class SeriesController extends Controller
         $repository->delete($series->id);
 
         return to_route('series.index')
-            ->with('success.message', "A série '{$series->name}' foi removida com sucesso.");
+            ->with('successMessage', "A série '{$series->name}' foi removida com sucesso.");
     }
 
     public function edit(Series $series)
@@ -82,6 +82,6 @@ class SeriesController extends Controller
         $repository->update($series);
 
         return to_route('series.index')
-            ->with('success.message', "A série '{$series->name}' foi alterada com sucesso.");
+            ->with('successMessage', "A série '{$series->name}' foi alterada com sucesso.");
     }
 }
