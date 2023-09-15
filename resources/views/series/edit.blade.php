@@ -1,4 +1,4 @@
-<x-layout title="Editar Série {{ $series->name }}">
+<x-layout title="Editar Série {{ $series->name }}">list-group-item
     <form action={{ route('series.update', $series) }} method="post">
         @csrf
         @method('PUT')
