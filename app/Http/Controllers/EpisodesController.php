@@ -19,7 +19,7 @@ class EpisodesController extends Controller
             ->with('successMessage', session("successMessage"));
     }
 
-    public function store(Request $request, EpisodesRepository $repository, Season $season)
+    public function update(Request $request, EpisodesRepository $repository, Season $season)
     {
         if (!is_null($request->episodes)) {
             $watchedEpisodes = $request->episodes;

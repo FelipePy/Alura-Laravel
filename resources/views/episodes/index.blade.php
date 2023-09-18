@@ -1,8 +1,9 @@
 <x-layout title="Episódios da temporada {{ $season->number }}" :successMessage="$successMessage">
 
     <ul class="list-group">
-        <form action="{{ route('episodes.store', $season->id, $season->episodes()) }}" method="post" >
+        <form action="{{ route('episodes.update', $season->id, $season->episodes()) }}" method="post" >
             @csrf
+            @method('PUT')
             @foreach ($season->episodes as $episode)
                 <li class="list-group-item d-flex justify-content-between align-items-center">
                     Episódio {{ $episode->number }}
