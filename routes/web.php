@@ -26,7 +26,9 @@ Route::get('/function', function () {
 
 Route::resource('/series', SeriesController::class);
 Route::resource('/series/{series}/seasons', SeasonsController::class);
-Route::resource('/seasons/{season}/episodes', EpisodesController::class);
+Route::resource('/seasons/{season}/episodes', EpisodesController::class)->except('update');
+Route::put('/seasons/{season}/episodes/', [EpisodesController::class, 'update'])->name('episodes.update');
+
 
 # Route::post('series/destroy/{id}', [SeriesController::class, 'destroy'])->name('series.destroy');
 
