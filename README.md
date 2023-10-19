@@ -64,35 +64,64 @@ If you discover a security vulnerability within Laravel, please send an e-mail t
 ## License
 
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
-# Alura Laravel
+# Alura - Controle de séries
 
-## Como instalar
+## Tecnologias utilizadas
+- PHP
+- Laravel
+- PostgreSQL
+- Composer
+- Docker
+- Docker compose
+- Bootstrap
 
-1. Caso ainda não tenha, instlar os seguintes requisitos
+## Instalar
+
+1. Instalar as seguintes libs
    - php8.1-intl 
    - php8.1-xsl
    - php8.1-mbstring
    - php-pgsql
 
 2. É necessário gerar uma chave do app com o seguinte comando
-    - ```php artisan key:generate```
+   ``` 
+    php artisan key:generate
+   ```
 
 3. O arquivo .env precisa ter as seguintes informações para se conectar com o banco
-    - DB_CONNECTION=pgsql 
-    - DATABASE_URL=postgresql://user:password@host:port/database 
-    - POSTGRES_ROOT_PASSWORD=rootpassword 
-    - POSTGRES_HOST=host
-    - POSTGRES_PORT=port 
-    - POSTGRES_DATABASE=database 
-    - POSTGRES_USER=user
-    - POSTGRES_PASSWORD=password
+    ```
+    DB_CONNECTION=pgsql 
+    DATABASE_URL=postgresql://user:password@host:port/database 
+    POSTGRES_ROOT_PASSWORD=rootpassword 
+    POSTGRES_HOST=host
+    POSTGRES_PORT=port 
+    POSTGRES_DATABASE=database 
+    POSTGRES_USER=user
+    POSTGRES_PASSWORD=password
+   ```
 
-4. Precisamos iniciar o banco de dados PostgreSQL através do docker
-    - ```docker-compose up -d```
 
-5. Aqui temos que realizar o migrate para que as tabelas sejam criados no banco de dados
-    - ```php artisan migrate```
+4. Instale as dependências do projeto
+   ```
+   composer install
+   ```
 
-6. Por fim iniciarmos nosso servidor php com
-   - ```php artisan serve```
+5. Precisamos iniciar o banco de dados PostgreSQL através do Docker Compose
+    ```
+    docker-compose up -d
+   ```
+
+6. Realizar o migrate para que as tabelas sejam criados no banco de dados
+   ```
+    php artisan migrate
+   ```
+
+7. Por fim iniciarmos nosso servidor PHP com
+   ```
+    php artisan serve
+   ```
+
+<h4 align="center"> 
+	🚧  Controle de séries - Em construção...  🚧
+</h4>
 
