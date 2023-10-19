@@ -1,10 +1,12 @@
 <?php
 
+use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\Auth\UsersController;
 use App\Http\Controllers\EpisodesController;
 use App\Http\Controllers\SeasonsController;
 use App\Http\Controllers\SeriesController;
+use App\Http\Middleware\Authenticator;
 use Illuminate\Support\Facades\Route;
-use \App\Http\Middleware\Authenticator;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,6 +31,13 @@ Route::resource('/series', SeriesController::class);
 Route::resource('/series/{series}/seasons', SeasonsController::class);
 Route::resource('/seasons/{season}/episodes', EpisodesController::class)->except('update');
 Route::put('/seasons/{season}/episodes/', [EpisodesController::class, 'update'])->name('episodes.update');
+Route::controller(LoginController::class)->group(function () {
+    Route::get('/login', 'index')->name('login');
+    Route::post('/login', 'store')->name('store');
+});
+
+Route::resource('/user', UsersController::class);
+
 
 
 # Route::post('series/destroy/{id}', [SeriesController::class, 'destroy'])->name('series.destroy');
