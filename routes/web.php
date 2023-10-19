@@ -4,6 +4,7 @@ use App\Http\Controllers\EpisodesController;
 use App\Http\Controllers\SeasonsController;
 use App\Http\Controllers\SeriesController;
 use Illuminate\Support\Facades\Route;
+use \App\Http\Middleware\Authenticator;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,7 +19,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return redirect('/series ');
-});
+})->middleware(Authenticator::class);
 
 Route::get('/function', function () {
     echo "This is a web page for your base function";

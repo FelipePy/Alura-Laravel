@@ -7,10 +7,10 @@
             <div class="col-12">
                 <label for="name" class="form-label">Nome:</label>
                 <input type="text"
-                       value="{{ $series->name }}"
                        autofocus
                        id="name" name="name"
-                       class="form-control" >
+                       class="form-control"
+                       value={{ $series->name }}>
             </div>
         </div>
         <button type="submit" class="btn btn-primary">Editar</button>
