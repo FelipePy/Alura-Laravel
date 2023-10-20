@@ -19,18 +19,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return redirect('/series ');
-})->middleware(Authenticator::class);
-
 Route::get('/function', function () {
     echo "This is a web page for your base function";
 });
 
-Route::resource('/series', SeriesController::class);
-Route::resource('/series/{series}/seasons', SeasonsController::class);
-Route::resource('/seasons/{season}/episodes', EpisodesController::class)->except('update');
-Route::put('/seasons/{season}/episodes/', [EpisodesController::class, 'update'])->name('episodes.update');
+
 Route::controller(LoginController::class)->group(function () {
     Route::get('/login', 'index')->name('login');
     Route::post('/login', 'store')->name('store');
@@ -38,6 +31,15 @@ Route::controller(LoginController::class)->group(function () {
 
 Route::resource('/user', UsersController::class);
 
+Route::middleware('authenticator')->group(function () {
+    Route::get('/', function () {
+        return redirect('/series ');
+    });
+    Route::resource('/series', SeriesController::class);
+    Route::resource('/series/{series}/seasons', SeasonsController::class);
+    Route::resource('/seasons/{season}/episodes', EpisodesController::class)->except('update');
+    Route::put('/seasons/{season}/episodes/', [EpisodesController::class, 'update'])->name('episodes.update');
+});
 
 
 # Route::post('series/destroy/{id}', [SeriesController::class, 'destroy'])->name('series.destroy');
