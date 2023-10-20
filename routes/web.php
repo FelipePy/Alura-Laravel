@@ -27,6 +27,7 @@ Route::get('/function', function () {
 Route::controller(LoginController::class)->group(function () {
     Route::get('/login', 'index')->name('login');
     Route::post('/login', 'store')->name('store');
+    Route::get('/logout', 'destroy')->name('logout');
 });
 
 Route::resource('/user', UsersController::class);
