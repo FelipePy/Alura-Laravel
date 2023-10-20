@@ -9,6 +9,8 @@
         <link rel="stylesheet" href="{{ asset('/css/app.css') }}">
     </head>
     <body>
+
+
         <div class="container">
             <h1>{{ $title }}</h1>
 
