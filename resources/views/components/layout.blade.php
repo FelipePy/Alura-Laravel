@@ -10,11 +10,17 @@
     </head>
     <body>
 
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <nav class="navbar navbar-expand-lg navbar-light">
         <div class="container-fluid">
             <a class="navbar-brand" href="{{ route('series.index') }}">Home</a>
 
-            <a href="{{ route('logout') }}">Sair</a>
+            @auth
+                <a class="text-decoration-none text-black" href="{{ route('logout') }}">Sair</a>
+            @endauth
+
+            @guest
+                <a class="text-decoration-none text-black" href="{{ route('login') }}">Entrar</a>
+            @endguest
 
         </div>
     </nav>
