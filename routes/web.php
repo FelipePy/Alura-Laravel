@@ -42,6 +42,15 @@ Route::middleware('authenticator')->group(function () {
     Route::put('/seasons/{season}/episodes/', [EpisodesController::class, 'update'])->name('episodes.update');
 });
 
+Route::get('/email', function () {
+    return new \App\Mail\SeriesCreated(
+        'Série de teste',
+        2,
+        5,
+        10
+    );
+});
+
 
 # Route::post('series/destroy/{id}', [SeriesController::class, 'destroy'])->name('series.destroy');
 
