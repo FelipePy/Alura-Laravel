@@ -19,6 +19,7 @@
             @endauth
 
             @if($title != 'Login')
+                
                 @guest
                     <a class="text-decoration-none text-black" href="{{ route('login') }}">Entrar</a>
                 @endguest
