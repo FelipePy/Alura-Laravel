@@ -21,6 +21,11 @@ class SeriesCreated extends Mailable
         //
     }
 
+    public function build()
+    {
+        return $this->view('view.name');
+    }
+
     /**
      * Get the message envelope.
      */
