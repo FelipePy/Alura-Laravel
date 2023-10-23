@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Repositories\UsersRepository;
+use Illuminate\Auth\AuthenticationException;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -24,3 +25,5 @@ class UsersController extends Controller
         return to_route('series.index');
     }
 }
+
+# TODO: Preciso inserir o tratamento de erros em todos os controllers, repositorys e etc

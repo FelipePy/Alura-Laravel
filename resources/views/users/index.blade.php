@@ -1,4 +1,4 @@
-<x-layout title="Login">
+<x-layout title="Cadastrar-se">
     <form method="post">
         @csrf
 

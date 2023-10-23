@@ -31,12 +31,12 @@ Route::controller(LoginController::class)->group(function () {
 });
 
 Route::resource('/series', SeriesController::class);
+Route::resource('/user', UsersController::class);
 
 Route::middleware('authenticator')->group(function () {
     Route::get('/', function () {
         return redirect('/series ');
     });
-    Route::resource('/user', UsersController::class);
     Route::resource('/series/{series}/seasons', SeasonsController::class);
     Route::resource('/seasons/{season}/episodes', EpisodesController::class)->except('update');
     Route::put('/seasons/{season}/episodes/', [EpisodesController::class, 'update'])->name('episodes.update');
