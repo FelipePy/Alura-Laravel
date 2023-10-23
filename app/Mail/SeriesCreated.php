@@ -19,8 +19,8 @@ class SeriesCreated extends Mailable
     public function __construct(
         public string $seriesName,
         public int $seriesId,
-        public int $seasonsQnt,
-        public int $episodesQnt,
+        public int $seasonsQty,
+        public int $episodesPerSeason,
         public string $url = 'seasons.index'
     )
     {

@@ -3,8 +3,8 @@
 Uma nova Série foi criada.
 
  - Nome da série: {{ $seriesName }}
- - Quantidade de temporadas: {{ $seasonsQnt }}
- - Quantidade de episódios: {{ $episodesQnt }}
+ - Quantidade de temporadas: {{ $seasonsQty }}
+ - Quantidade de episódios: {{ $episodesPerSeason }}
 
 Acesse aqui:
 <x-mail::button :url="route('seasons.index', $seriesId)">
