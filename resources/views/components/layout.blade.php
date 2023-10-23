@@ -18,9 +18,12 @@
                 <a class="text-decoration-none text-black" href="{{ route('logout') }}">Sair</a>
             @endauth
 
-            @guest
-                <a class="text-decoration-none text-black" href="{{ route('login') }}">Entrar</a>
-            @endguest
+            @if($title != 'Login')
+                @guest
+                    <a class="text-decoration-none text-black" href="{{ route('login') }}">Entrar</a>
+                @endguest
+            @endif
+
 
         </div>
     </nav>
