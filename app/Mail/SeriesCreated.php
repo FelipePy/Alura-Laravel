@@ -33,7 +33,7 @@ class SeriesCreated extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: 'Series Created',
+            subject: 'Série criada com sucesso',
         );
     }
 
