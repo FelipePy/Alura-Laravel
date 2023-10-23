@@ -30,13 +30,12 @@ Route::controller(LoginController::class)->group(function () {
     Route::get('/logout', 'destroy')->name('logout');
 });
 
-Route::get('/series', [SeriesController::class, 'index'])->name('series.index');
+Route::resource('/series', SeriesController::class);
 
 Route::middleware('authenticator')->group(function () {
     Route::get('/', function () {
         return redirect('/series ');
     });
-    Route::resource('/series', SeriesController::class)->except('index');
     Route::resource('/user', UsersController::class);
     Route::resource('/series/{series}/seasons', SeasonsController::class);
     Route::resource('/seasons/{season}/episodes', EpisodesController::class)->except('update');

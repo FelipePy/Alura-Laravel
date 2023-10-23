@@ -12,6 +12,11 @@ use Illuminate\View\View;
 class SeriesController extends Controller
 {
 
+    public function __construct()
+    {
+        $this->middleware('authenticator')->except('index');
+    }
+
     public function index(SeriesRepository $repository)
     {
         // return response('', ['Location' => 'url']);
