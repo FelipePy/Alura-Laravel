@@ -16,14 +16,15 @@ class SeriesCreated extends Mailable
     /**
      * Create a new message instance.
      */
-    public function __construct()
+    public function __construct(
+        public string $seriesName,
+        public int $seriesId,
+        public int $seasonsQnt,
+        public int $episodesQnt,
+        public string $url = 'seasons.index'
+    )
     {
         //
-    }
-
-    public function build()
-    {
-        return $this->view('view.name');
     }
 
     /**
@@ -42,7 +43,8 @@ class SeriesCreated extends Mailable
     public function content(): Content
     {
         return new Content(
-            view: 'view.name',
+            markdown: 'mail.series-created',
+
         );
     }
 
