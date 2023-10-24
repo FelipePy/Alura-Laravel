@@ -42,13 +42,20 @@ Route::middleware('authenticator')->group(function () {
     Route::put('/seasons/{season}/episodes/', [EpisodesController::class, 'update'])->name('episodes.update');
 });
 
-Route::get('/email', function () {
-    return new \App\Mail\SeriesCreated(
-        'Série de teste',
-        2,
-        5,
-        10
+Route::get('/email/login', function () {
+    return new \App\Mail\LoginMail(
+        'User teste',
+        'user@example.com',
     );
+});
+
+Route::get('/email/create-series', function () {
+   return new \App\Mail\SeriesCreated(
+       'Dark',
+       2,
+       10,
+       10
+   );
 });
 
 
