@@ -72,7 +72,7 @@ class SeriesController extends Controller
             return $serie;
         });
 
-        foreach ($usersRepository->findAll() as $user) {
+        foreach ($usersRepository->findAll() as $index => $user) {
             $email = new SeriesCreated(
                 $serie->name,
                 $serie->id,
@@ -80,7 +80,8 @@ class SeriesController extends Controller
                 $request->episodesPerSeason,
                 $user->name
             );
-            Mail::to($user)->send($email);
+            $when = now()->addSeconds($index * 4);
+            Mail::to($user)->later($when, $email);
         }
 
         return to_route('series.index')
