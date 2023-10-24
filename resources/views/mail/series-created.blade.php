@@ -1,5 +1,5 @@
 <x-mail::message>
-# Olá {{ $username }}!
+# Olá {{\Illuminate\Support\Facades\Auth::user()->name}}!
 Uma nova Série foi criada.
 
  - Nome da série: {{ $seriesName }}
