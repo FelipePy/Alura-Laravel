@@ -27,7 +27,9 @@ class LoginController extends Controller
         $user = Auth::user();
         $email = new LoginMail(
             $user->name,
-            $user->email
+            $user->email,
+            "mail.auth.login",
+            "Login realizado"
         );
         $when = now()->addSeconds(4);
         Mail::to($user)->later($when, $email);
