@@ -46,6 +46,8 @@ Route::get('/email/login', function () {
     return new \App\Mail\LoginMail(
         'User teste',
         'user@example.com',
+        "mail.auth.login",
+         "Login realizado"
     );
 });
 
@@ -54,7 +56,16 @@ Route::get('/email/create-series', function () {
        'Dark',
        2,
        10,
-       10
+       10,
+   );
+});
+
+Route::get('/email/create-user', function () {
+   return new \App\Mail\LoginMail(
+        "User teste",
+       "user@example.com",
+       "mail.auth.create-user",
+       "Criação de usuário"
    );
 });
 

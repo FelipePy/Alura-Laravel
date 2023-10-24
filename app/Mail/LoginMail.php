@@ -17,7 +17,9 @@ class LoginMail extends Mailable
      */
     public function __construct(
         public string $username,
-        public string $email
+        public string $email,
+        public $view,
+        public $subject
     )
     {
         //
@@ -29,7 +31,7 @@ class LoginMail extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: 'Login realizado',
+            subject: $this->subject,
         );
     }
 
@@ -39,7 +41,7 @@ class LoginMail extends Mailable
     public function content(): Content
     {
         return new Content(
-            markdown: 'mail.login',
+            markdown: $this->view,
         );
     }
 
