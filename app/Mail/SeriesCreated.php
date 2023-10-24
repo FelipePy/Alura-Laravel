@@ -3,7 +3,6 @@
 namespace App\Mail;
 
 use Illuminate\Bus\Queueable;
-use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
@@ -21,7 +20,8 @@ class SeriesCreated extends Mailable
         public int $seriesId,
         public int $seasonsQty,
         public int $episodesPerSeason,
-        public string $url = 'seasons.index'
+        public string $url = 'seasons.index',
+        public string $username = ""
     )
     {
         //

@@ -20,6 +20,10 @@ class EloquentUsersRepository implements UsersRepository
         return User::findOrFail($id);
     }
 
+    public function findAll() {
+        return User::all();
+    }
+
 
     public function findByEmail(string $email)
     {
