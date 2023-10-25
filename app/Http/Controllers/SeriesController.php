@@ -3,15 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\SeriesFormRequest;
-use App\Mail\SeriesCreated;
 use App\Models\Series;
-use App\Models\User;
 use App\Repositories\SeriesRepository;
-use App\Repositories\UsersRepository;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Mail;
 use Illuminate\View\View;
+use \App\Events\Series\SeriesCreated as SeriesCreatedEvent;
 
 class SeriesController extends Controller
 {
@@ -23,22 +19,6 @@ class SeriesController extends Controller
 
     public function index(SeriesRepository $repository)
     {
-        // return response('', ['Location' => 'url']);
-        // Posso usar uma função chamada redirect('url')
-        // Que faz o papel da linha 11
-//        $series = [
-//            'The Hundred',
-//            'Dark',
-//            'The rain',
-//            'Peaky Blinders',
-//            'Grey\'s Anatomy'
-//        ];
-
-        # $variables = compact('series');
-
-        # $series = Series::all();
-        # $baseRepository = new BaseRepository(new Series());
-        #$series = $baseRepository->findAll();
         $series = $repository->findAll();
         $successMessage = session('successMessage');
 
@@ -61,31 +41,26 @@ class SeriesController extends Controller
 
     public function store(
         SeriesFormRequest $request,
-        SeriesRepository $serieRepository,
-        UsersRepository $usersRepository
+        SeriesRepository $serieRepository
     )
     {
         $attributes = $request->all();
-        $serie = DB::transaction(function () use ($attributes, $serieRepository) {
-            $serie = $serieRepository->create($attributes);
 
-            return $serie;
+        # O DB::transaction serve para que se alguma coisa de errado na interação com o banco de dados,
+        # Ele de rollback automaticamente.
+        $series = DB::transaction(function () use ($attributes, $serieRepository) {
+            return $serieRepository->create($attributes);
         });
 
-        foreach ($usersRepository->findAll() as $index => $user) {
-            $email = new SeriesCreated(
-                $serie->name,
-                $serie->id,
-                $request->seasonsQty,
-                $request->episodesPerSeason,
-                $user->name
-            );
-            $when = now()->addSeconds($index * 4);
-            Mail::to($user)->later($when, $email);
-        }
+        SeriesCreatedEvent::dispatch(
+            $series->name,
+            $series->id,
+            $request->seasonsQty,
+            $request->episodesPerSeason
+        );
 
         return to_route('series.index')
-            ->with('successMessage', "A série '{$serie->name}' foi adicionada com sucesso.");
+            ->with('successMessage', "A série '{$series->name}' foi adicionada com sucesso.");
     }
 
     public function destroy(Series $series, SeriesRepository $repository)
