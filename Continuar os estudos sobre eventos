@@ -1,0 +1,268 @@
+[33mcommit 63c9103689b477e02477a3f8ba8a766d1fb4dd25[m[33m ([m[1;36mHEAD -> [m[1;32mListeners[m[33m)[m
+Author: FelipePy <felipespsampaiomotasp@gmail.com>
+Date:   Wed Oct 25 14:53:59 2023 -0300
+
+    Continuar os estudos sobre eventos
+
+[33mcommit 1c77d2bf38515c3f0afb41b230b4983fd9b218c9[m[33m ([m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m, [m[1;32mmain[m[33m)[m
+Author: FelipePy <felipespsampaiomotasp@gmail.com>
+Date:   Tue Oct 24 14:50:30 2023 -0300
+
+    Send e-mails to sign-in and login
+
+[33mcommit 2e6fc9b34e30c2409c693c36abe1a5c195cbfc89[m
+Author: FelipePy <felipespsampaiomotasp@gmail.com>
+Date:   Tue Oct 24 14:22:49 2023 -0300
+
+    Send e-mail to login
+
+[33mcommit 6bebb7c701b1a87932a3763da16e8e3f6a68e238[m
+Author: FelipePy <felipespsampaiomotasp@gmail.com>
+Date:   Tue Oct 24 11:05:17 2023 -0300
+
+    send async e-mails
+
+[33mcommit ddbe36ef289143f19e5f02b7d1c9ef36c02b9276[m
+Author: FelipePy <felipespsampaiomotasp@gmail.com>
+Date:   Tue Oct 24 10:04:33 2023 -0300
+
+    Send e-mail for all users
+
+[33mcommit f1ba806f4738249da358c7c16d9ecf434e80566a[m
+Author: FelipePy <felipespsampaiomotasp@gmail.com>
+Date:   Tue Oct 24 10:03:19 2023 -0300
+
+    Revert "Send e-mail for all users"
+    
+    This reverts commit 38871a48928a5e1426936817c254879f31bb75c6.
+
+[33mcommit 38871a48928a5e1426936817c254879f31bb75c6[m
+Author: FelipePy <felipespsampaiomotasp@gmail.com>
+Date:   Tue Oct 24 10:01:57 2023 -0300
+
+    Send e-mail for all users
+
+[33mcommit b8e649979eb115f161045d918be16b34eba11dfc[m
+Author: FelipePy <felipespsampaiomotasp@gmail.com>
+Date:   Mon Oct 23 14:50:14 2023 -0300
+
+    Send e-mail on create series
+
+[33mcommit 42ef0e6c08c7d905659d43947613677b3cf45ea0[m
+Author: FelipePy <felipespsampaiomotasp@gmail.com>
+Date:   Mon Oct 23 14:39:49 2023 -0300
+
+    Alter name of the variables
+
+[33mcommit 1817e26632f56c1845dcc3c95bcc8011ad041bdb[m
+Author: FelipePy <felipespsampaiomotasp@gmail.com>
+Date:   Mon Oct 23 14:35:09 2023 -0300
+
+    Create the markdown view e-mail
+
+[33mcommit 1695482b007bed43b1d3234a0015cc0dded9418c[m
+Author: FelipePy <felipespsampaiomotasp@gmail.com>
+Date:   Mon Oct 23 13:44:23 2023 -0300
+
+    Create the view to send e-mail from created series
+
+[33mcommit f176984518650c7bc41dfe1dba7c4bfe533c4f21[m
+Author: FelipePy <felipespsampaiomotasp@gmail.com>
+Date:   Mon Oct 23 13:41:35 2023 -0300
+
+    Create a branch and file to send e-mails
+
+[33mcommit d107693fe7179fe28f98b6a7383804bd975577ea[m
+Author: FelipePy <felipespsampaiomotasp@gmail.com>
+Date:   Mon Oct 23 11:42:52 2023 -0300
+
+    Resolve alias
+
+[33mcommit bff6ba3b1ab5bf61c277c1a56a06362a74fd7093[m
+Author: FelipePy <felipespsampaiomotasp@gmail.com>
+Date:   Mon Oct 23 11:42:27 2023 -0300
+
+    teste alias
+
+[33mcommit b92bd233b793ee42db801b3e5a05d2e64a29fda0[m
+Author: FelipePy <felipespsampaiomotasp@gmail.com>
+Date:   Mon Oct 23 11:41:11 2023 -0300
+
+    Teste aliases
+
+[33mcommit 7ef042bb951c599ae9d9d158eed2babc8811f374[m
+Author: FelipePy <felipespsampaiomotasp@gmail.com>
+Date:   Mon Oct 23 11:36:25 2023 -0300
+
+    Button exit on login
+
+[33mcommit 409c541adbb86990f61481469c63ddeec59c0fd8[m
+Author: FelipePy <felipespsampaiomotasp@gmail.com>
+Date:   Mon Oct 23 11:05:47 2023 -0300
+
+    Create user
+
+[33mcommit 946ccc511fd18c12f5afbd1fdd2aa71d6044a6b3[m
+Author: FelipePy <felipespsampaiomotasp@gmail.com>
+Date:   Mon Oct 23 08:07:07 2023 -0300
+
+    Middleware and login
+
+[33mcommit 3167b5f2055de38c5421036d23246358727d4e3f[m
+Author: FelipePy <felipespsampaiomotasp@gmail.com>
+Date:   Fri Oct 20 11:34:39 2023 -0300
+
+    Permissions of the user
+
+[33mcommit 305616333a7c070fcb125b987561bb9b98b1c731[m
+Author: FelipePy <felipespsampaiomotasp@gmail.com>
+Date:   Fri Oct 20 11:22:07 2023 -0300
+
+    Navbar login and logout
+
+[33mcommit 172ebb39b5da9c612bd3d3d65ba2452565cfd9d8[m
+Author: FelipePy <felipespsampaiomotasp@gmail.com>
+Date:   Fri Oct 20 11:04:24 2023 -0300
+
+    Navbar to logout of system
+
+[33mcommit a10f77198ecaa92eb2d2f808720dfeda7b40c156[m
+Author: FelipePy <felipespsampaiomotasp@gmail.com>
+Date:   Fri Oct 20 11:02:18 2023 -0300
+
+    Route of logout
+
+[33mcommit 795d6bf4e6c17ce561f3b0e720c7c680e55bfebd[m
+Author: FelipePy <felipespsampaiomotasp@gmail.com>
+Date:   Fri Oct 20 11:01:18 2023 -0300
+
+    Function of logout
+
+[33mcommit 14c50e9277cdef122d879d7a284ec54b42edb0cd[m
+Author: FelipePy <felipespsampaiomotasp@gmail.com>
+Date:   Fri Oct 20 10:59:31 2023 -0300
+
+    Condition for page login
+
+[33mcommit 2233aba682cd4a236b68e8840137ea908ea7f1b7[m
+Author: FelipePy <felipespsampaiomotasp@gmail.com>
+Date:   Fri Oct 20 10:54:45 2023 -0300
+
+    Adding middlware on routes
+
+[33mcommit 50be8eed27e955fce73710a365a397ae6e1a38d3[m
+Author: FelipePy <felipespsampaiomotasp@gmail.com>
+Date:   Thu Oct 19 13:29:20 2023 -0300
+
+    Add system of login
+
+[33mcommit fd7d14a3353a092ef009a350a8492bf52048936d[m
+Author: FelipePy <felipespsampaiomotasp@gmail.com>
+Date:   Thu Oct 19 10:32:11 2023 -0300
+
+    Add middleware Authenticator
+
+[33mcommit b41930137f8b9ffdd97d245264818c801afe83d4[m
+Author: FelipePy <felipespsampaiomotasp@gmail.com>
+Date:   Thu Oct 19 09:45:31 2023 -0300
+
+    Remove text list-group-item
+
+[33mcommit eb46b39163b7bb46030a7f6519b0180c9f8138ac[m
+Author: FelipePy <felipespsampaiomotasp@gmail.com>
+Date:   Thu Oct 19 09:12:23 2023 -0300
+
+    improving the README
+
+[33mcommit 0cbf1ff97d88dec7d92e02443fbd84c6fc2aa48b[m
+Author: FelipePy <felipespsampaiomotasp@gmail.com>
+Date:   Thu Oct 19 08:48:21 2023 -0300
+
+    Add on README installation step by step
+
+[33mcommit f50e2f0703064960ca020a728d474e8d3f525ec1[m
+Merge: 0022e87 787c41c
+Author: Felipe Sampaio <60964439+FelipePy@users.noreply.github.com>
+Date:   Mon Sep 18 10:00:15 2023 -0300
+
+    Merge pull request #3 from FelipePy/update-episodes
+    
+    Alter route web to update episodes
+
+[33mcommit 787c41ccad62228a7eced04310b7d167b37f5c86[m
+Author: FelipePy <felipesampaio.contato@gmail.com>
+Date:   Mon Sep 18 09:56:33 2023 -0300
+
+    Alter route web to update episodes
+
+[33mcommit 0022e8770cb44ec8358248d6fac74799475facf6[m
+Author: FelipePy <felipesampaio.contato@gmail.com>
+Date:   Fri Sep 15 14:26:31 2023 -0300
+
+    fix: remove bug list null
+
+[33mcommit d7d1103779910af94e3e0b548c927e20170e8168[m
+Merge: d925f12 f0272e5
+Author: Felipe Sampaio <60964439+FelipePy@users.noreply.github.com>
+Date:   Fri Sep 15 13:34:02 2023 -0300
+
+    Merge pull request #2 from FelipePy/ux
+    
+    Ux
+
+[33mcommit f0272e58094e50af65e0fef7a2e42e26ff2792f5[m
+Author: FelipePy <felipesampaio.contato@gmail.com>
+Date:   Fri Sep 15 13:30:28 2023 -0300
+
+    Wathed count
+
+[33mcommit 7af0a62d2c073ad702fc9e8c72f03763ea6c8e9a[m
+Author: FelipePy <felipesampaio.contato@gmail.com>
+Date:   Fri Sep 15 13:19:48 2023 -0300
+
+    Message to user
+
+[33mcommit a6e125c9b8effcbddbd402fdb8cdd8161132e420[m
+Author: FelipePy <felipesampaio.contato@gmail.com>
+Date:   Fri Sep 15 12:42:52 2023 -0300
+
+    Remove TODO
+
+[33mcommit d925f125ddbe289c465dd7164d0579ba50217641[m
+Merge: 6f02239 82cbee8
+Author: Felipe Sampaio <60964439+FelipePy@users.noreply.github.com>
+Date:   Fri Sep 15 12:41:15 2023 -0300
+
+    Merge pull request #1 from FelipePy/fix-update-episodes
+    
+    fix: update only modified
+
+[33mcommit 82cbee836183922d893fb7b25754153759ad1d19[m
+Author: FelipePy <felipesampaio.contato@gmail.com>
+Date:   Fri Sep 15 12:11:09 2023 -0300
+
+    fix: update only modified
+
+[33mcommit 6f02239f3a7688175a4e86e923cf46b395955f3d[m
+Author: FelipePy <felipesampaio.contato@gmail.com>
+Date:   Thu Aug 31 23:26:22 2023 -0300
+
+    add watched check
+
+[33mcommit 6ab76ef437d594943e8da62dc5269544b5f5b035[m
+Author: FelipePy <felipesampaio.contato@gmail.com>
+Date:   Tue Aug 29 19:37:35 2023 -0300
+
+    Providers
+
+[33mcommit 562b6751476e268d122ec0b50b4497f6e97c338f[m
+Author: FelipePy <felipesampaio.contato@gmail.com>
+Date:   Tue Aug 29 14:49:13 2023 -0300
+
+    Transactions
+
+[33mcommit c87d4f3dc8f8e0addea06eb0e7f546f492b77b05[m
+Author: FelipePy <felipesampaio.contato@gmail.com>
+Date:   Tue Aug 29 13:47:44 2023 -0300
+
+    first commit
