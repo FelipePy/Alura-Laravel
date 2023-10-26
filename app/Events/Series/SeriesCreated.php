@@ -18,7 +18,8 @@ class SeriesCreated
         public readonly string $seriesName,
         public readonly int $seriesId,
         public readonly int $seasonsQty,
-        public readonly int $episodesPerSeason
+        public readonly int $episodesPerSeason,
+        public readonly string $email
 )
     {
         //
