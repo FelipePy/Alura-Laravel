@@ -2,8 +2,7 @@
 
 namespace App\Listeners\Series;
 
-use App\Events\Series\SeriesCreated;
-use App\Repositories\Eloquent\EloquentUsersRepository;
+use App\Events\Series\EmailSent as EmailSentEvent;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Support\Facades\Log;
 
@@ -20,13 +19,8 @@ class LogSendEmailCreated implements ShouldQueue
     /**
      * Handle the event.
      */
-    public function handle(SeriesCreated $event): void
+    public function handle(EmailSentEvent $event): void
     {
-        $usersRepository = new EloquentUsersRepository();
-        $users = $usersRepository->findAll();
-
-        foreach ($users as $user) {
-            Log::info("Email enviado para {$user->email} notificando criação de série '{$event->seriesName}'.");
-        }
+        Log::info("Email enviado para {$event->email} notificando a criação de série '{$event->seriesName}'.");
     }
 }

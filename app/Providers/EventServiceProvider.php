@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Events\Series\EmailSent;
 use App\Events\Series\SeriesCreated;
 use App\Listeners\Series\LogSendEmailCreated;
 use App\Listeners\Series\LogSeriesCreated;
@@ -24,7 +25,9 @@ class EventServiceProvider extends ServiceProvider
         ],
         SeriesCreated::class => [
             SendEmailCreated::class,
-            LogSeriesCreated::class,
+            LogSeriesCreated::class
+        ],
+        EmailSent::class => [
             LogSendEmailCreated::class
         ]
     ];

@@ -2,7 +2,7 @@
 
 namespace App\Listeners\Series;
 
-use App\Events\Series\SeriesCreated;
+use App\Events\Series\SeriesCreated as SeriesCreatedEvent;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Support\Facades\Log;
 
@@ -19,7 +19,7 @@ class LogSeriesCreated implements ShouldQueue
     /**
      * Handle the event.
      */
-    public function handle(SeriesCreated $event): void
+    public function handle(SeriesCreatedevent $event): void
     {
         Log::info("A série '{$event->seriesName}' com o id '{$event->seriesId}' foi criada com sucesso.");
     }
