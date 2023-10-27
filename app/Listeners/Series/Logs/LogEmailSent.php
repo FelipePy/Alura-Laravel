@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Listeners\Series;
+namespace App\Listeners\Series\Logs;
 
 use App\Events\Series\EmailSent as EmailSentEvent;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Support\Facades\Log;
 
-class LogSendEmailCreated implements ShouldQueue
+class LogEmailSent implements ShouldQueue
 {
     /**
      * Create the event listener.
@@ -23,4 +23,6 @@ class LogSendEmailCreated implements ShouldQueue
     {
         Log::info("Email enviado para {$event->email} notificando a criação de série '{$event->seriesName}'.");
     }
+
+    # TODO: Preciso criar mais logs
 }

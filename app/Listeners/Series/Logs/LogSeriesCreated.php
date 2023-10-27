@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Listeners\Series;
+namespace App\Listeners\Series\Logs;
 
 use App\Events\Series\SeriesCreated as SeriesCreatedEvent;
 use Illuminate\Contracts\Queue\ShouldQueue;

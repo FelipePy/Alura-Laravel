@@ -4,13 +4,12 @@ namespace App\Providers;
 
 use App\Events\Series\EmailSent;
 use App\Events\Series\SeriesCreated;
-use App\Listeners\Series\LogSendEmailCreated;
-use App\Listeners\Series\LogSeriesCreated;
+use App\Listeners\Series\Logs\LogEmailSent;
+use App\Listeners\Series\Logs\LogSeriesCreated;
 use App\Listeners\Series\SendEmailCreated;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
-use Illuminate\Support\Facades\Event;
 
 class EventServiceProvider extends ServiceProvider
 {
@@ -28,7 +27,7 @@ class EventServiceProvider extends ServiceProvider
             LogSeriesCreated::class
         ],
         EmailSent::class => [
-            LogSendEmailCreated::class
+            LogEmailSent::class
         ]
     ];
 
