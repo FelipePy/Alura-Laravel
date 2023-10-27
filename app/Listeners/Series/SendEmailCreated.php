@@ -6,6 +6,7 @@ use App\Events\Series\EmailSent as EmailSentEvent;
 use App\Events\Series\SeriesCreated as SeriesCreatedEvent;
 use App\Mail\SeriesCreated;
 use App\Repositories\Eloquent\EloquentUsersRepository;
+use Exception as Exception;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Mail;
@@ -39,12 +40,12 @@ class SendEmailCreated implements ShouldQueue
             $when = now()->addSeconds($index * 4);
             Mail::to($user)->later($when, $email);
 
-            Log::info("{$index}");
-
             EmailSentEvent::dispatch(
                 $user->email,
                 $event->seriesName
             );
         }
+
+        # TODO: Mesmo quando o email não é enviado, ele adiciona o log de enviado
     }
 }
