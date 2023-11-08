@@ -33,10 +33,14 @@ class EloquentSeriesRepository implements SeriesRepository
 
     public function create(array $attributes): Series
     {
-        $serie = Series::create($attributes);
-        $this->create_season($serie->id, $attributes['seasonsQty']);
-        $this->create_episode($serie->seasons, $attributes['episodesPerSeason']);
-        return $serie;
+        # O DB::transaction serve para que se alguma coisa de errado na interação com o banco de dados,
+        # Ele de rollback automaticamente.
+        return DB::transaction(function () use ($attributes) {
+            $serie = Series::create($attributes);
+            $this->create_season($serie->id, $attributes['seasonsQty']);
+            $this->create_episode($serie->seasons, $attributes['episodesPerSeason']);
+            return $serie;
+        });
 
         #try {
          #   $serie = Series::create($attributes);

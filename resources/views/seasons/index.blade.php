@@ -6,6 +6,9 @@
         </div>
     @endisset
 
+    <div class="d-flex justify-content-center">
+        <img src="{{ asset('storage/' . $series->cover) }}" alt="Capa da série {{ $series->name }}" style="width: 400; height: 400px;" class="img-fluid figure-img rounded">
+    </div>
     <ul class="list-group">
         @foreach ($series->seasons as $season)
             <li class="list-group-item d-flex justify-content-between align-items-center">
