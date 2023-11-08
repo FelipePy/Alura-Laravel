@@ -5,11 +5,14 @@ namespace App\Http\Controllers;
 use App\Http\Requests\SeriesFormRequest;
 use App\Models\Series;
 use App\Repositories\SeriesRepository;
-use Illuminate\Support\Facades\DB;
+use App\services\SeriesService;
+use Carbon\Carbon;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
-use Illuminate\Validation\Rules\File;
 use Illuminate\View\View;
 use \App\Events\Series\SeriesCreated as SeriesCreatedEvent;
+use Datetime;
 
 class SeriesController extends Controller
 {
@@ -49,7 +52,10 @@ class SeriesController extends Controller
         # TODO: melhorar essas validações
         $validator = Validator::make($request->all(),
             ['cover' => 'required|image'],
-            ['cover.image' => 'O campo Capa deve ser uma imagem']
+            [
+                'cover.image' => 'O campo Capa deve ser uma imagem.',
+                'cover.required' => 'O campo capa é obrigatório.'
+            ]
         );
 
         if ($validator->fails()) {
@@ -59,20 +65,20 @@ class SeriesController extends Controller
                 ->withInput();
         }
 
-        $attributes = $request->all();
-        $image = $request->file('cover');
-        if (!is_uploaded_file($image)) {
+        if (!is_uploaded_file($request->file('cover'))) {
             return redirect()
                 ->back()
                 ->withErrors('Essa mensagem não foi enviada corretamente.')
                 ->withInput();
         }
 
-        # O DB::transaction serve para que se alguma coisa de errado na interação com o banco de dados,
-        # Ele de rollback automaticamente.
-        $series = DB::transaction(function () use ($attributes, $serieRepository) {
-            return $serieRepository->create($attributes);
-        });
+        $path = SeriesService::create_path($request);
+        $coverPath = $request->file('cover')->storeAs('series_cover', $path, 'public');
+
+        $attributes = $request->all();
+
+        $attributes['cover'] = $coverPath;
+        $series = $serieRepository->create($attributes);
 
         SeriesCreatedEvent::dispatch(
             $series->name,
@@ -88,6 +94,9 @@ class SeriesController extends Controller
     public function destroy(Series $series, SeriesRepository $repository)
     {
         $repository->delete($series->id);
+        if (Storage::disk('public')->exists($series->cover)) {
+            Storage::disk('public')->delete($series->cover);
+        }
 
         return to_route('series.index')
             ->with('successMessage', "A série '{$series->name}' foi removida com sucesso.");
