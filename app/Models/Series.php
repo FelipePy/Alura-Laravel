@@ -16,7 +16,7 @@ class Series extends Model
     # Caso o nome da classe (Model) fosse diferente do denominado aqui
     # Poderiamos referenciar da seguinte maneira
     ## protected $table = 'seriados';
-    protected $fillable = ['name'];
+    protected $fillable = ['name', 'cover'];
     protected $with = ['seasons'];
 
     public function seasons()

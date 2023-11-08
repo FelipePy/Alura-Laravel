@@ -6,6 +6,8 @@ use App\Http\Requests\SeriesFormRequest;
 use App\Models\Series;
 use App\Repositories\SeriesRepository;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Validation\Rules\File;
 use Illuminate\View\View;
 use \App\Events\Series\SeriesCreated as SeriesCreatedEvent;
 
@@ -44,7 +46,27 @@ class SeriesController extends Controller
         SeriesRepository $serieRepository
     )
     {
+        # TODO: melhorar essas validações
+        $validator = Validator::make($request->all(),
+            ['cover' => 'required|image'],
+            ['cover.image' => 'O campo Capa deve ser uma imagem']
+        );
+
+        if ($validator->fails()) {
+            return redirect()
+                ->back()
+                ->withErrors($validator)
+                ->withInput();
+        }
+
         $attributes = $request->all();
+        $image = $request->file('cover');
+        if (!is_uploaded_file($image)) {
+            return redirect()
+                ->back()
+                ->withErrors('Essa mensagem não foi enviada corretamente.')
+                ->withInput();
+        }
 
         # O DB::transaction serve para que se alguma coisa de errado na interação com o banco de dados,
         # Ele de rollback automaticamente.
