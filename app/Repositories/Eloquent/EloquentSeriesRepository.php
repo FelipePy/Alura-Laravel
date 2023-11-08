@@ -35,7 +35,7 @@ class EloquentSeriesRepository implements SeriesRepository
     {
         $serie = Series::create($attributes);
         $this->create_season($serie->id, $attributes['seasonsQty']);
-        $this->create_episode($serie->seasons, $attributes['episodePerSeason']);
+        $this->create_episode($serie->seasons, $attributes['episodesPerSeason']);
         return $serie;
 
         #try {

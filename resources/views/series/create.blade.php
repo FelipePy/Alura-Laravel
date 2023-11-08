@@ -1,6 +1,6 @@
 <x-layout title="Nova Série">
 
-    <form action={{ route('series.store') }} method="post">
+    <form action={{ route('series.store') }} method="post" enctype="multipart/form-data">
         @csrf
 
         <div class="row mb-3">
@@ -36,6 +36,16 @@
             </div>
         </div>
 
+        <div class="row mb-3">
+            <div class="col-12">
+                <label for="cover" class="form-label">Capa</label>
+                <input type="file"
+                       class="form-control"
+                       id="cover"
+                       name="cover"
+                       accept="image/gif, image/png, image/jpeg">
+            </div>
+        </div>
 
         <button type="submit" class="btn btn-primary">Criar</button>
 
