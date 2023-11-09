@@ -6,7 +6,7 @@
             <li class="list-group-item justify-content-between d-flex align-items-center">
                 @auth<a class="link-dark" href='{{ route('seasons.index', $serie->id) }}'>@endauth
                     <div class="d-flex align-items-center">
-                        <img src="{{ asset('storage/' . $serie->cover) }}" alt="Capa da série {{ $serie->name }}" style="height: 100px; width: 100px;" class="img-fluid figure-img rounded me-3">
+                        <img src="{{ asset('storage/' . $serie->cover) }}" alt="Capa da série {{ $serie->name }}" width="100" class="img-fluid figure-img rounded me-3">
                         {{ $serie->name }}
                     </div>
                 @auth</a>@endauth
