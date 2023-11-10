@@ -2,8 +2,10 @@
 
 namespace App\Providers;
 
+use App\Events\Series\DeletedSeries;
 use App\Events\Series\EmailSent;
 use App\Events\Series\SeriesCreated;
+use App\Listeners\Series\DeleteCover;
 use App\Listeners\Series\Logs\LogEmailSent;
 use App\Listeners\Series\Logs\LogSeriesCreated;
 use App\Listeners\Series\SendEmailCreated;
@@ -28,6 +30,9 @@ class EventServiceProvider extends ServiceProvider
         ],
         EmailSent::class => [
             LogEmailSent::class
+        ],
+        DeletedSeries::class => [
+            DeleteCover::class
         ]
     ];
 

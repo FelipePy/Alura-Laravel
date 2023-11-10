@@ -2,17 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\Series\DeletedSeries as DeletedSeriesEvent;
 use App\Http\Requests\SeriesFormRequest;
 use App\Models\Series;
 use App\Repositories\SeriesRepository;
 use App\services\SeriesService;
-use Carbon\Carbon;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\View\View;
 use \App\Events\Series\SeriesCreated as SeriesCreatedEvent;
-use Datetime;
 
 class SeriesController extends Controller
 {
@@ -93,10 +90,9 @@ class SeriesController extends Controller
 
     public function destroy(Series $series, SeriesRepository $repository)
     {
+        $cover = $series->cover;
         $repository->delete($series->id);
-        if (Storage::disk('public')->exists($series->cover)) {
-            Storage::disk('public')->delete($series->cover);
-        }
+        DeletedSeriesEvent::dispatch($cover);
 
         return to_route('series.index')
             ->with('successMessage', "A série '{$series->name}' foi removida com sucesso.");
